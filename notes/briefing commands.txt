@@ -1,0 +1,29 @@
+0 ;ends the sequence
+1 ;loads model ID, XZY position words, and XYZ rotation bytes into the slot specified
+2 ;writes a word into specified entity's values $A and $B (dunno what this does just yet)
+3 ;byte is how many updates to loop/wait
+4 ;load entity pointer into DE, advance it two places
+5 ;writes a dialogue page to the screen
+	dw $0000 ;6 unused
+	dw $0000 ;7 unused
+8 ;use the next two bytes as speech bubble dimensions
+	dw $0000 ;9 unused
+	dw $0000 ;A unused
+	dw $0000 ;B unused
+C ;make the commander look at the screen
+D ;writes eight bytes to the entity specified, from value $E - $15 (unknown atm)
+E ;sets entity's model to 0 (do not draw)
+F ;draw "static" to the screen
+	dw $0000 ;10 unused
+11 ;load byte into C100 (plays interface sound effects)
+12 ;load byte into C110 (plays general sound effects)
+13 ;load byte into C118 (plays explosion sound effects)
+14 ;loads image from bank D using the pointer following
+15 ;sets top bit of entity model (explodes it)
+16 ;wipes the top half of the display?
+17 ;copies position from second specified entity to the first.
+18 ;clear C338 (enables animations on the screen)
+19 ;set C338 (disables animations on the screen)
+1A ;sets entity's X and Y speed ($E-$F)
+1B ;sets entity's X, Y, and Z speed, along with an unknown value($E-$11) 
+1C ;load next byte into C108 (plays music track)

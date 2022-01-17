@@ -1,0 +1,30 @@
+speedup notes:
+
+in LoadFullGUI (bank 4), can remove the DrawSurfaceAndSky
+
+in DrawSurfaceAndSky (bank 2), can remove the duplicate SetHorizonGFX
+
+in (bank 0), can remove the duplicate CallDrawHalf3D
+
+briefing text in bank 5 can remove the switch to katakana just for ﾞ marks
+
+in C:73C9 the calls before SetUpBriefing can be removed
+
+DisplayTutorialLesson (bank F) can get rid of some duplicates, like CopyTutInstructorFromBuf
+
+possibly save the line projections straight to the registers needed for DrawLine instead of to HRAM? faster + less space that way, need to doublecheck all places 2:400C is used though
+
+7FB could use an xor a instead of ld a, $00 i think
+
+fixes:
+fix the 6 in segment-display number graphics?
+fix the tunnel stoplight not displaying the first frame?
+fix the radar base number graphics? (2bpp/AreaNums)
+fix the tunnel's right side not damaging you ($3499.damageright)
+should the lurches be flipped?
+figure out why pause is unreliable
+func745 is missing a push DE
+the ball graphics table uses duplicates for diameters 8-5 when it doesn't have to
+the call at 222C is in the wrong bank
+DirectionTextNorthEast uses the kanji for West
+the tutorial seems to always hard-reset the song whenever it's progressed
